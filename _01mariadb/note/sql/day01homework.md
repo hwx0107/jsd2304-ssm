@@ -16,7 +16,7 @@
 
 ## 课堂练习3
 1. 创建数据库mydb4 字符集utf8并使用
-2. 创建teacher表 有名字(name)字段
+2. 创建teacher表,字符集为utf8 有名字(name)字段
 3. 添加表字段: 最后添加age 最前面添加id(int型) , age前面添加salary工资(int型)
 4. 删除age字段
 5. 修改表名为t
@@ -24,7 +24,7 @@
 7. 删除数据库mydb4
 
 ## 课堂练习4
-1.创建库 shopdb，并切换库；
+1.创建库 shopdb,并指定字符集为utf8，并切换库；
 2.创建用户表 user，字段要求如下：
    用户编号id，int
    用户名username，CHAR(20)
