@@ -108,3 +108,24 @@ DESC person;
 
 DROP TABLE person;
 SHOW TABLES;
+
+-- 综合练习 shopdb
+CREATE DATABASE shopdb;
+USE shopdb;
+CREATE TABLE user(
+                     id INT,
+                     username CHAR(20),
+                     password CHAR(32),
+                     phone CHAR(11) DEFAULT 13911112222,
+                     email CHAR(50)
+);
+DESC user;
+-- 全列插入1条表记录
+INSERT INTO user VALUES (1,'佩奇','123456','13603263409','309435365@qq.com');
+SELECT * FROM user;
+-- 指定字段插入数据
+INSERT INTO user(id,username,password)
+VALUES (2,'乔治','123456'),(3,'丹妮','123456');
+SELECT * FROM user;
+
+USE mydb;

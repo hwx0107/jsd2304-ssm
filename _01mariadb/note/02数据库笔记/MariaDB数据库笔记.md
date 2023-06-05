@@ -542,7 +542,7 @@ INSERT语句中指定字段时，忽略的字段会被插入默认值。**当表
   INSERT INTO person (age) VALUES (55);
   ```
 
-* 练习
+* 练习 
 
   1. 创建库 shopdb，并切换库；
 
