@@ -129,3 +129,23 @@ VALUES (2,'乔治','123456'),(3,'丹妮','123456');
 SELECT * FROM user;
 
 USE mydb;
+SELECT * FROM person;
+
+-- 修改表数据update
+UPDATE person SET age=40;
+-- 把步惊云的年龄修改为25岁
+UPDATE person SET age=25 WHERE name='步惊云';
+-- 把雄霸的名字改为 熊二，年龄改为 2
+UPDATE person SET name='熊二',age=2 WHERE name='雄霸';
+-- 把年龄为40的用户的年龄全部改为36
+UPDATE person SET age=36 WHERE age=40;
+-- 将每个人的年龄+1
+UPDATE person SET age=age+1;
+
+-- 删除delete
+DELETE FROM person WHERE name='熊大';
+DELETE FROM person WHERE age<30;
+
+-- 插入NULL值
+INSERT INTO person(name, age) VALUES ('天才威', NULL);
+SELECT * FROM person;
