@@ -176,7 +176,16 @@ VALUES (1, 'Lily', 29, 20000, 2),
        (5, 'Abby', 28, 17000, 3),
        (6, 'Jame', 32, 22000, 3);
 
+-- 员工表中插入1条数据,部门的id为 8(不存在)
+-- 数据存入失败
+INSERT INTO emp VALUES (NULL,'Jack',25,12000,8);
+-- 删除主表数据时，如果从表中有和其相关联的数据，则不允许删除
+-- 需要先删除从表中相关联的数据，再删除主表中的数据
+DELETE FROM emp WHERE dept_id=4;
+DELETE FROM dept WHERE id=4;
 
+SELECT * FROM dept;
+SELECT * FROM emp;
 
 
 
