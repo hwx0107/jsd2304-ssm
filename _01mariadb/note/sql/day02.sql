@@ -179,10 +179,23 @@ VALUES (1, 'Lily', 29, 20000, 2),
 -- 员工表中插入1条数据,部门的id为 8(不存在)
 -- 数据存入失败
 INSERT INTO emp VALUES (NULL,'Jack',25,12000,8);
--- 删除主表数据时，如果从表中有和其相关联的数据，则不允许删除
--- 需要先删除从表中相关联的数据，再删除主表中的数据
+-- 默认级联动作：RESTRICT
+-- 删除主表dept数据时，如果从表emp中有和其相关联的数据，则不允许删除
+-- 需要先删除从表emp中相关联的数据，再删除主表dept中的数据
 DELETE FROM emp WHERE dept_id=4;
 DELETE FROM dept WHERE id=4;
+
+-- 第二种级联动作：CASCADE
+-- 1.删除外键
+ALTER TABLE emp DROP FOREIGN KEY dept_fk;
+-- 2.增加外键(已有表)
+ALTER TABLE emp ADD CONSTRAINT dept_fk FOREIGN KEY (dept_id)
+    REFERENCES dept(id)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+-- 级联删除: 删除主表数据时，从表中相关联数据一并删除
+DELETE FROM dept WHERE id=6;
+-- 级联更新：更新主表主键字段时，从表中相关联的数据一并更新
+UPDATE dept SET id=4 WHERE id=2;
 
 SELECT * FROM dept;
 SELECT * FROM emp;
