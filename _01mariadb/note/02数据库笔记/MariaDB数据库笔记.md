@@ -961,7 +961,7 @@ CREATE TABLE userinfo(
 
 - 创建表时为字段添加唯一性约束
 
-  ```
+  ```mysql
   CREATE TABLE user4(
   	id INT PRIMARY KEY AUTO_INCREMENT,
   	name VARCHAR(30) UNIQUE,
@@ -1049,16 +1049,16 @@ CREATE TABLE userinfo(
       name    varchar(32) NOT NULL,
       age     tinyint,
       salary  double(8, 2),
-      dept_id int
+      dept_id int,
   );
   
   INSERT INTO emp
-  VALUES (1, "Lily", 29, 20000, 2),
-         (2, "Tom", 27, 16000, 1),
-         (3, "Joy", 30, 28000, 1),
-         (4, "Emma", 24, 8000, 4),
-         (5, "Abby", 28, 17000, 3),
-         (6, "Jame", 32, 22000, 3);
+  VALUES (1, 'Lily', 29, 20000, 2),
+         (2, 'Tom', 27, 16000, 1),
+         (3, 'Joy', 30, 28000, 1),
+         (4, 'Emma', 24, 8000, 4),
+         (5, 'Abby', 28, 17000, 3),
+         (6, 'Jame', 32, 22000, 3);
   ```
 
   上面两个表中每个人员都应该有指定的部门，但是实际上在没有约束的情况下人员是可以没有部门的或者也可以添加一个不存在的部门，这显然是不合理的。
@@ -1247,13 +1247,30 @@ SELECT 字段1,字段2,... FROM 表名;
   WHERE title='一级讲师';
   ```
   
-- 查看除了"刘苍松"以外的所有老师的名字，工资，奖金，职位
+- 查看除了"刘苍松"以外的所有老师的名字，工资，奖金，职位 
 
-- 查看职位是"大队长"的学生的名字,年龄,性别?
+  ```mysql
+  SELECT name,comm,title 
+  FROM teacher
+  WHERE name!='刘苍松';
+  ```
+
+- 查看职位是"大队长"的学生的名字,年龄,性别? 
+
+  ```mysql
+  SELECT name,age,gender FROM student
+  WHERE job='大队长';
+  ```
 
 - 查看年龄在30岁以上(含)的老师的名字,职称,工资,奖金
 
+  ```mysql
+  SELECT name,title,salary,comm
+  FROM teacher
+  WHERE age>=30;
+  ```
 
+  
 
 
 #### 1）算术运算符
