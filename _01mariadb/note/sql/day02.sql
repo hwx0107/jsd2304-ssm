@@ -39,7 +39,7 @@ CREATE TABLE person
     id     INT,
     name   VARCHAR(20),
     salary DOUBLE(7, 2)
-    ) CHARSET = UTF8;
+) CHARSET = UTF8;
 -- 合理范围内，数据插入成功
 INSERT INTO person(id, name, salary)
 VALUES (1, 'Tom', 12345.67);
@@ -85,21 +85,57 @@ INSERT INTO userinfo(id, username, password, mobile, balance, created_time)
 VALUES (1, 'Mike', '123456', '13166668888', 50000.00, '20230606102930');
 
 -- 1.将id为1的数据的密码改为：654321，余额改为8710.16元
-UPDATE userinfo SET password='654321',balance=8710.16 WHERE id=1;
+UPDATE userinfo
+SET password='654321',
+    balance=8710.16
+WHERE id = 1;
 -- 2.在userinfo表的 id，username，password三个字段中插入1条数据，内容自定义
-INSERT INTO userinfo(id,username,password) VALUES (4,'zhao','871016');
+INSERT INTO userinfo(id, username, password)
+VALUES (4, 'zhao', '871016');
 -- 3.删除userinfo表中id大于100的记录（如果没有也没关系，写出语句）
-DELETE FROM userinfo WHERE id>100;
+DELETE
+FROM userinfo
+WHERE id > 100;
 
 -- 修改数据类型:TIMESTAMP
 # 1.修改created_time数据类型为：TIMESTAMP
 # 2.查询数据表确认
 # 3.再重新插入一条数据(id,username,password),查询确认
-ALTER TABLE userinfo MODIFY created_time TIMESTAMP;
+ALTER TABLE userinfo
+    MODIFY created_time TIMESTAMP;
 
 SELECT *
 FROM userinfo;
 
+
+-- 约束
+DROP TABLE userinfo;
+CREATE TABLE userinfo
+(
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    username     VARCHAR(20) NOT NULL,
+    password     CHAR(32) NOT NULL,
+    mobile       CHAR(11),
+    balance      DOUBLE(8, 2) NOT NULL DEFAULT 0.00,
+    created_time TIMESTAMP
+) CHARSET = UTF8;
+DESC userinfo;
+-- 主键+自增长
+-- 未给id字段赋值，会自动赋值并保持自增长
+INSERT INTO userinfo(username, password)
+VALUES ('lili', '123456'),('zhao', '123456');
+-- 指定id字段时，可以通过NULL进行占位
+INSERT INTO userinfo(id,username,password) VALUES (NULL,'ying','123456');
+-- 此条语句仅仅是为了测试
+DELETE FROM userinfo WHERE id>=3;
+-- 查询表中数据
+SELECT * FROM userinfo;
+
+-- 非空约束 NOT NULL
+-- 报错:password字段不允许为NULL，而且没有设置默认值Default
+INSERT INTO userinfo(id,username) VALUES (NULL,'赵丽颖');
+-- 正确:因为balance和created_time虽然设置了非空NULL，但是也设置了默认值
+INSERT INTO userinfo(id,username,password) VALUES (NULL,'赵丽颖','123456');
 
 
 
