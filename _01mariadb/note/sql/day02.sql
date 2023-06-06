@@ -113,11 +113,11 @@ DROP TABLE userinfo;
 CREATE TABLE userinfo
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
-    username     VARCHAR(20) NOT NULL,
+    username     VARCHAR(20) NOT NULL UNIQUE,
     password     CHAR(32) NOT NULL,
-    mobile       CHAR(11),
+    mobile       CHAR(11) NOT NULL UNIQUE,
     balance      DOUBLE(8, 2) NOT NULL DEFAULT 0.00,
-    created_time TIMESTAMP
+    created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) CHARSET = UTF8;
 DESC userinfo;
 -- 主键+自增长
@@ -136,6 +136,45 @@ SELECT * FROM userinfo;
 INSERT INTO userinfo(id,username) VALUES (NULL,'赵丽颖');
 -- 正确:因为balance和created_time虽然设置了非空NULL，但是也设置了默认值
 INSERT INTO userinfo(id,username,password) VALUES (NULL,'赵丽颖','123456');
+
+-- 唯一约束UNIQUE
+INSERT INTO userinfo(username,password) VALUES (NULL, '123456');
+SELECT * FROM userinfo;
+
+
+-- 创建部门表
+CREATE TABLE dept
+(
+    id    int PRIMARY KEY auto_increment,
+    dname VARCHAR(50) not null
+);
+
+INSERT INTO dept
+VALUES (1, '技术部'),
+       (2, '销售部'),
+       (3, '市场部'),
+       (4, '行政部'),
+       (5, '财务部'),
+       (6, '总裁办公室');
+
+-- 创建员工表
+CREATE TABLE emp
+(
+    id      int PRIMARY KEY AUTO_INCREMENT,
+    name    varchar(32) NOT NULL,
+    age     tinyint,
+    salary  double(8, 2),
+    dept_id int,
+    CONSTRAINT dept_fk FOREIGN KEY (dept_id)
+        REFERENCES dept(id)
+);
+INSERT INTO emp
+VALUES (1, 'Lily', 29, 20000, 2),
+       (2, 'Tom', 27, 16000, 1),
+       (3, 'Joy', 30, 28000, 1),
+       (4, 'Emma', 24, 8000, 4),
+       (5, 'Abby', 28, 17000, 3),
+       (6, 'Jame', 32, 22000, 3);
 
 
 
