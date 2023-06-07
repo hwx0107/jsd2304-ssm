@@ -151,7 +151,17 @@ WHERE title NOT IN ('老板','总监');
 SELECT name,floor FROM class
 WHERE name IN ('3年级2班','5年级3班');
 
-
+-- 模糊查询 LIKE ------------------------------
+-- 查看姓张的学生都有谁?
+SELECT name FROM student WHERE name LIKE '张%';
+-- 查看三个字名字中第二个字是'平'的学生都有谁?
+SELECT name FROM student WHERE name LIKE '_平_';
+-- 查看最后一个字是'晶'的老师都有谁?
+SELECT name FROM teacher WHERE name LIKE '%晶';
+-- 查看哪些学生是课代表?列出他的名字和职位
+SELECT name,student.job FROM student WHERE job LIKE '%课代表';
+-- 查看所有的2班都在哪层?
+SELECT name,floor FROM class WHERE name LIKE '%2班';
 
 
 
