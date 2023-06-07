@@ -163,5 +163,19 @@ SELECT name,student.job FROM student WHERE job LIKE '%课代表';
 -- 查看所有的2班都在哪层?
 SELECT name,floor FROM class WHERE name LIKE '%2班';
 
-
+-- 模糊查询（课堂练习）
+-- 1. 查询名字姓"李"的学生姓名
+SELECT name FROM student WHERE name LIKE '李%';
+-- 2. 查询名字中包含"江"的学生姓名
+SELECT name FROM student WHERE name LIKE '%江%';
+-- 3. 查询名字以"郭"结尾的学生姓名
+SELECT name FROM student WHERE name LIKE '%郭';
+-- 4. 查询9-12岁里是"课代表"的学生信息
+SELECT name,age,job FROM student
+WHERE age BETWEEN 9 AND 12 AND job LIKE '%课代表';
+-- 5. 查询名字第二个字是"苗"的学生信息
+SELECT name FROM student WHERE name LIKE '_苗%';
+-- 6. 查询姓"邱"的课代表都是谁?
+SELECT name,job FROM student
+WHERE name LIKE '邱%' AND job LIKE '%课代表';
 
