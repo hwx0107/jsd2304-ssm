@@ -243,7 +243,17 @@ SELECT name,age,birth FROM student
 ORDER BY age
 LIMIT 10,5;
 
-
+-- 聚合函数 --------------------------
+-- 查看老师的平均工资是多少?
+SELECT AVG(salary) FROM teacher;
+-- 查看老师的最高工资,最低工资,平均工资和工资总和都是多少?
+SELECT MAX(salary),MIN(salary),AVG(salary),SUM(salary)
+FROM teacher;
+-- 查看负责课程编号1的老师的平均工资是多少?
+SELECT AVG(salary) FROM teacher
+WHERE subject_id=1;
+-- 查看总共多少位老师?
+SELECT COUNT(id) FROM teacher;
 
 
 
