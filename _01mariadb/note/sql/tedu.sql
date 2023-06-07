@@ -93,6 +93,18 @@ USE tedu;
 SELECT name,age,gender,class_id,job FROM student
 WHERE class_id<=6 AND (job='大队长' OR job='中队长');
 
-
+-- BETWEEN AND
+-- 1.查看工资在2000到5000之间的老师的名字,性别,年龄,工资
+SELECT name,gender,age,salary FROM teacher
+WHERE salary BETWEEN 2000 AND 5000;
+-- 2.查看年龄 除了 8到10岁的学生的名字，性别，年龄
+SELECT name,gender,age FROM student
+WHERE age NOT BETWEEN 8 AND 10;
+-- 3.查看所有在3-5层的班级都有哪些？列出班级名称和所在楼层
+SELECT name,floor FROM class
+WHERE floor BETWEEN 3 AND 5;
+-- 4.查看年龄在20到35之间的男老师都有谁？列出名字，性别，年龄，职称
+SELECT name,gender,age,title FROM teacher
+WHERE age BETWEEN 20 AND 35 AND gender='男';
 
 
