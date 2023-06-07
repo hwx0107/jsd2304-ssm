@@ -107,4 +107,22 @@ WHERE floor BETWEEN 3 AND 5;
 SELECT name,gender,age,title FROM teacher
 WHERE age BETWEEN 20 AND 35 AND gender='男';
 
+-- IN 和 NOT IN ------------------------------------------
+-- 查看所有大队长，中队长和小队长的名字，性别，年龄和职位?
+SELECT name,gender,age,job FROM student
+WHERE job IN ('大队长','中队长','小队长');
+-- 查看id编号为1 3 5的老师的 编号，职称，工资
+SELECT id,title,salary FROM teacher
+WHERE id IN (1,3,5);
+-- 查看除一级讲师和二级讲师之外的所有老师的名字，职称，工资
+SELECT name,title,salary FROM teacher
+WHERE title NOT IN ('一级讲师','二级讲师');
+-- 查看除大队长，中队长，小队长的其他学生的名字，职位，性别，年龄
+SELECT name,job,gender,age FROM student
+WHERE job NOT IN ('大队长','中队长','小队长');
+
+
+
+
+
 
