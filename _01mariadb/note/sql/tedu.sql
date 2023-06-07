@@ -255,6 +255,29 @@ WHERE subject_id=1;
 -- 查看总共多少位老师?
 SELECT COUNT(id) FROM teacher;
 
-
+-- 聚合函数练习
+-- 1. 查看负责课程编号2的老师共多少人?
+SELECT COUNT(id) number FROM teacher
+WHERE subject_id=2;
+-- 2. 查看班级编号(class_id)为1的学生有多少人?
+SELECT COUNT(id) number FROM student
+WHERE class_id=1;
+-- 3. 查看全校学生生日最大的是哪天?
+SELECT MIN(birth) FROM student;
+-- 4. 查看11岁的课代表总共多少人?
+SELECT COUNT(id) FROM student
+WHERE age=11 AND job LIKE '%课代表';
+-- 5. 姓张的学生有多少人?
+SELECT COUNT(id) FROM student
+WHERE name LIKE '张%';
+-- 6. 工资高于5000的老师中最低工资是多少?
+SELECT MIN(salary) FROM teacher
+WHERE salary>5000;
+-- 7. 4层有几个班?
+SELECT COUNT(id) FROM class
+WHERE floor=4;
+-- 8. 老师中"总监"的平均工资是多少?
+SELECT AVG(salary) FROM teacher
+WHERE title='总监';
 
 
