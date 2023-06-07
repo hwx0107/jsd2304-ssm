@@ -122,6 +122,35 @@ SELECT name,job,gender,age FROM student
 WHERE job NOT IN ('大队长','中队长','小队长');
 
 
+-- 课堂练习
+-- 1. 查看负责课程编号(subject_id)为1的男老师都有谁?
+SELECT name,subject_id,gender FROM teacher
+WHERE subject_id=1 AND gender='男';
+-- 2. 查看工资高于5000的女老师都有谁?
+SELECT name,salary,gender FROM teacher
+WHERE salary>5000 AND gender='女';
+-- 3. 查看工资高于5000的男老师或所有女老师的工资？
+SELECT name,gender,salary FROM teacher
+WHERE (salary>5000 AND gender='男') OR gender='女';
+-- 4. 查看所有9岁学生的学习委员和语文课代表都是谁?
+SELECT name,job,age FROM student
+WHERE age=9 AND job IN('学习委员','语文课代表');
+-- 5. 查看工资在6000到10000之间的老师以及具体工资?
+SELECT name,salary FROM teacher
+WHERE salary BETWEEN 6000 AND 10000;
+-- 6. 查看工资在4000到8000以外的老师及具体工资?
+SELECT name,salary FROM teacher
+WHERE salary NOT BETWEEN 4000 AND 8000;
+# 7. 查看一级讲师和二级讲师的奖金(comm)是多少?
+SELECT name,comm,title FROM teacher
+WHERE title IN('一级讲师','二级讲师');
+-- 8. 查看除老板和总监的其他老师的工资和奖金是多少?
+SELECT name,salary,comm,title FROM teacher
+WHERE title NOT IN ('老板','总监');
+# 9. 查看'3年级2班'和'5年级3班'在那层楼?
+SELECT name,floor FROM class
+WHERE name IN ('3年级2班','5年级3班');
+
 
 
 
