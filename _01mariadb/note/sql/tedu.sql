@@ -291,3 +291,20 @@ SELECT class_id,COUNT(id) 人数 FROM student GROUP BY class_id;
 SELECT job, COUNT(id) 人数, MIN(birth) 最大生日, MAX(birth) 最小生日
 FROM student
 GROUP BY job;
+
+
+-- 查看同班级同性别的学生分别多少人?
+SELECT class_id,gender,COUNT(id) 人数 FROM student
+GROUP BY class_id,gender;
+
+-- 多字段分组
+-- 查看每个班每种职位各多少人?
+SELECT class_id,job,COUNT(id) FROM student
+GROUP BY class_id,job;
+
+-- 单字段分组
+-- 查看每个科目老师的平均工资排名?
+SELECT subject_id,AVG(salary) avgs FROM teacher
+GROUP BY subject_id
+ORDER BY avgs DESC
+LIMIT 0,5;
