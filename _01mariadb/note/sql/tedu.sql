@@ -179,3 +179,12 @@ SELECT name FROM student WHERE name LIKE '_苗%';
 SELECT name,job FROM student
 WHERE name LIKE '邱%' AND job LIKE '%课代表';
 
+-- AS 别名 -------------------------------------------
+-- 给字段起别名
+-- 1.查询所有老师的姓名和年薪
+SELECT name AS 姓名, salary*12 AS 年薪 FROM teacher;
+-- 省略AS关键字
+SELECT name 姓名, salary*12 年薪 FROM teacher;
+
+-- 给表起别名
+SELECT t.name 姓名, t.salary*12 年薪 FROM teacher t;
