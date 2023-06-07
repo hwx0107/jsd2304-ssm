@@ -280,4 +280,14 @@ WHERE floor=4;
 SELECT AVG(salary) FROM teacher
 WHERE title='总监';
 
+-- 分组聚合 ---------------------------
+-- 查看每种职位的老师平均工资是多少?
+SELECT title,AVG(salary) FROM teacher GROUP BY title;
 
+-- 查看每个班级各多少人? 显示 class_id 和 人数
+SELECT class_id,COUNT(id) 人数 FROM student GROUP BY class_id;
+
+-- 查看学生每种职位各多少人,以及最大生日和最小生日?
+SELECT job, COUNT(id) 人数, MIN(birth) 最大生日, MAX(birth) 最小生日
+FROM student
+GROUP BY job;
