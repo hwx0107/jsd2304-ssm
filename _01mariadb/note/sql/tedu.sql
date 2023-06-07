@@ -200,7 +200,48 @@ SELECT name,birth FROM student ORDER BY birth;
 SELECT name,age,birth FROM student
 WHERE age BETWEEN 7 AND 10 ORDER BY birth;
 -- 查看老师的工资和奖金，首先按照奖金的升序，再按照工资的降序
+SELECT name,comm,salary FROM teacher
+ORDER BY comm, salary DESC;
 
+-- LIMIT 分页查询 -------------------------
+-- 查看男老师工资的前5名?
+SELECT name,salary FROM teacher
+WHERE gender='男'
+ORDER BY salary DESC
+LIMIT 5;
+
+-- 查看老师奖金信息，按照降序排序后，每页显示3条，显示第5页?
+SELECT name,comm FROM teacher
+ORDER BY comm DESC
+LIMIT 12,3;
+
+-- 1. 查询所有10岁学生的生日,按生日对应的年纪从大到小.
+SELECT name,age,birth FROM student
+WHERE age=10
+ORDER BY birth;
+-- 2. 查询8岁同学中名字含有"苗"的学生信息
+SELECT name,age FROM student
+WHERE age=8 AND name LIKE '%苗%';
+-- 3. 查询负责课程编号1和2号且工资高于6000的老师信息
+SELECT name,subject_id,salary FROM teacher
+WHERE subject_id IN(1,2) AND salary>6000;
+-- 4. 查询10岁以上的语文课代表和数学课代表
+SELECT name,age,job FROM student
+WHERE age>10 AND job IN ('语文课代表','数学课代表');
+-- 5. 查询不教课程编号1的老师信息,按照工资降序排序
+SELECT name,salary,subject_id FROM teacher
+WHERE subject_id!=1
+ORDER BY salary DESC;
+-- 6. 查询所有老师的奖金，并按照奖金降序排序
+SELECT name,comm FROM teacher
+ORDER BY comm DESC;
+-- 7. 查看工资高于8000的老师负责的课程编号都有那些?
+SELECT name,subject_id,salary FROM teacher
+WHERE salary>8000;
+-- 8. 查看全校年龄最小学生的第11-15名
+SELECT name,age,birth FROM student
+ORDER BY age
+LIMIT 10,5;
 
 
 
