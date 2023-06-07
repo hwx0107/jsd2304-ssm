@@ -188,3 +188,22 @@ SELECT name 姓名, salary*12 年薪 FROM teacher;
 
 -- 给表起别名
 SELECT t.name 姓名, t.salary*12 年薪 FROM teacher t;
+
+-- ORDER BY 排序 ------------------------
+-- 查看老师的工资排名,从多到少
+SELECT t.name,t.salary FROM teacher t ORDER BY t.salary DESC;
+-- 查看老师奖金的排名?
+SELECT t.name,t.comm FROM teacher t ORDER BY t.comm DESC;
+-- 查看学生的生日,按照从远到近
+SELECT name,birth FROM student ORDER BY birth;
+-- 查看7-10岁的学生信息,学生按照年龄从大到小排序(同年龄的看生日)
+SELECT name,age,birth FROM student
+WHERE age BETWEEN 7 AND 10 ORDER BY birth;
+-- 查看老师的工资和奖金，首先按照奖金的升序，再按照工资的降序
+
+
+
+
+
+
+
