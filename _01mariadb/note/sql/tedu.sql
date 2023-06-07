@@ -308,3 +308,23 @@ SELECT subject_id,AVG(salary) avgs FROM teacher
 GROUP BY subject_id
 ORDER BY avgs DESC
 LIMIT 0,5;
+
+-- 查看每个科目老师的平均工资?但是仅查看平均工资高于6000的那些！
+SELECT subject_id,AVG(salary) avgs FROM teacher
+GROUP BY subject_id
+HAVING avgs>6000;
+
+-- 查看每个科目男老师的平均工资?但是仅查看平均工资高于6000的那些！
+SELECT subject_id,AVG(salary) avgs FROM teacher
+WHERE gender='男'
+GROUP BY subject_id
+HAVING avgs>6000;
+
+-- 查看每个科目男老师的平均工资?但是仅查看平均工资高于5000的那些,
+-- 按照平均工资降序排列，每页显示2条数据，显示第2页的数据
+SELECT subject_id,AVG(salary) avgs FROM teacher -- 4
+WHERE gender='男'  -- 1
+GROUP BY subject_id -- 2
+HAVING avgs>5000  -- 3
+ORDER BY avgs DESC -- 5
+LIMIT 2,2; -- 6
