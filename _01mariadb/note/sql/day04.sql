@@ -281,8 +281,18 @@ WHERE s.class_id=c.id
   AND c.teacher_id=t.id
   AND s.birth=(SELECT MAX(birth) FROM student);
 
-
-
+-- 关联查询与聚合函数组合使用 --------------------------------
+-- 查看范传奇所带班级的学生共多少人?
+SELECT COUNT(s.id) number
+FROM teacher t, class c, student s
+WHERE c.teacher_id=t.id
+  AND s.class_id=c.id
+  AND t.name='范传奇';
+-- 查看教语文的老师平均工资是多少?
+SELECT AVG(t.salary) avg_sal
+FROM teacher t, subject s
+WHERE t.subject_id=s.id
+  AND s.name='语文';
 
 
 
