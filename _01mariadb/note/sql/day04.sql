@@ -128,3 +128,13 @@ SELECT name,class_id
 FROM student
 WHERE class_id IN (SELECT class_id FROM student WHERE name IN ('祝雷','李费水'));
 
+-- 多行多列子查询: 可以把查询的结果集当做一张表来创建
+-- 创建一张表,该表中记录了每个科目老师的工资情况,要求展示:最高,最低,总和和平均工资以及该科目id
+CREATE TABLE sal AS
+SELECT subject_id,MAX(salary) masa,MIN(salary) misa,SUM(salary) susa,AVG(salary) avsa
+FROM teacher
+GROUP BY subject_id;
+
+SHOW TABLES;
+SELECT * FROM sal;
+DROP TABLE sal;
