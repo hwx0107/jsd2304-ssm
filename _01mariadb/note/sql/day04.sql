@@ -212,3 +212,89 @@ FROM class c, student s, location l
 WHERE s.class_id=c.id
   AND s.location_id=l.id
   AND c.name='1年级1班';
+
+-- 综合练习 -----------------
+-- 1. 查看来自北京的学生都是谁?
+SELECT l.name,s.name
+FROM student s, location l
+WHERE s.location_id=l.id
+  AND l.name='北京';
+-- 2. 教"英语"的老师都是谁?
+SELECT t.name,s.name
+FROM teacher t, subject s
+WHERE t.subject_id=s.id
+  AND s.name='英语';
+-- 3. 刘苍松所带班级的学生都有谁?
+SELECT t.name,c.name,s.name
+FROM teacher t, class c, student s
+WHERE c.teacher_id=t.id
+  AND s.class_id=c.id
+  AND t.name='刘苍松';
+-- 4. 教语文的老师所带的班级有哪些?
+SELECT s.name,t.name,c.name
+FROM teacher t, subject s, class c
+WHERE c.teacher_id=t.id
+  AND t.subject_id=s.id
+  AND s.name='语文';
+-- 5. 王克晶所带的班级学生都来自哪些城市(去重：DISTINCT语句)?
+SELECT DISTINCT l.name
+FROM teacher t, class c, student s, location l
+WHERE c.teacher_id=t.id
+  AND s.class_id=c.id
+  AND s.location_id=l.id
+  AND t.name='王克晶';
+-- 6. 3年级的几个班主任都教哪些课程?
+SELECT t.name,c.name,s.name
+FROM class c, teacher t, subject s
+WHERE c.teacher_id=t.id
+  AND t.subject_id=s.id
+  AND c.name LIKE '3年级%';
+
+-- 7. 工资高于10000的老师所带班里的大队长都是谁?
+SELECT t.name,t.salary,c.name,s.name,s.job
+FROM teacher t, class c, student s
+WHERE c.teacher_id=t.id
+  AND s.class_id=c.id
+  AND t.salary>10000
+  AND s.job='大队长';
+
+-- 8. "李费水"的班主任教哪门课?
+SELECT s.name,t.name,su.name
+FROM student s, class c,teacher t, subject su
+WHERE s.class_id=c.id
+  AND c.teacher_id=t.id
+  AND t.subject_id=su.id
+  AND s.name='李费水';
+
+-- 9. 所在4楼的班里的大队长和中队长以及班主任都是谁?
+SELECT c.floor,s.name,s.job,t.name
+FROM student s, class c, teacher t
+WHERE s.class_id=c.id
+  AND c.teacher_id=t.id
+  AND c.floor=4
+  AND s.job IN ('大队长', '中队长');
+
+-- 10. 全校最小的同学的班主任是谁?(子查询？ MAX(birth)？)
+SELECT s.name,s.birth,t.name
+FROM student s, class c, teacher t
+WHERE s.class_id=c.id
+  AND c.teacher_id=t.id
+  AND s.birth=(SELECT MAX(birth) FROM student);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
