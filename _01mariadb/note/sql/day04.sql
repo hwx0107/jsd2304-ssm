@@ -162,3 +162,18 @@ SELECT aa.aid,aa.aname,bb.bid,bb.bname FROM a aa,b bb;
 SELECT t.name,s.name
 FROM teacher t, subject s
 WHERE t.subject_id=s.id;
+
+-- 查看班级的名称和对应的班主任(老师)是谁?
+SELECT c.name, t.name, t.age
+FROM teacher t,class c
+WHERE c.teacher_id=t.id;
+
+-- 查看每个学生的名字，年龄，以及其所在的班级名称和所在楼层
+SELECT s.name,s.age,c.name,c.floor
+FROM class c, student s
+WHERE s.class_id=c.id;
+
+
+
+
+
