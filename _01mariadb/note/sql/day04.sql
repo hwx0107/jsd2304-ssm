@@ -198,3 +198,17 @@ WHERE s.class_id=c.id
   AND c.name LIKE '5年级%'
   AND s.job='中队长';
 
+-- N张表关联 ----------------------------------------------
+-- 查看"范传奇"所带班级的学生都有谁?要列出:学生名字，年龄，班级名称，老师名字
+SELECT s.name,s.age,c.name,t.name
+FROM teacher t, class c, student s
+WHERE c.teacher_id=t.id
+  AND s.class_id=c.id
+  AND t.name='范传奇';
+
+-- 查看1年级1班的同学的名字和来自的城市
+SELECT s.name,l.name,c.name
+FROM class c, student s, location l
+WHERE s.class_id=c.id
+  AND s.location_id=l.id
+  AND c.name='1年级1班';
