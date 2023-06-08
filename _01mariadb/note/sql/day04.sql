@@ -101,7 +101,21 @@ SELECT DISTINCT job FROM student;
 -- 3.查看各年龄段的学生都有哪些职位?
 SELECT DISTINCT age,job FROM student;
 
-
+-- 子查询 ------------------------------
+-- 单行单列子查询
+-- 1.查看比范传奇工资高的老师都有谁?
+SELECT name,salary FROM teacher
+WHERE salary>(SELECT salary FROM teacher WHERE name='范传奇');
+-- 2.查看哪些老师的工资是高于平均工资的?
+SELECT name,salary FROM teacher
+WHERE salary>(SELECT AVG(salary) FROM teacher);
+-- 3.查看和'李费水'在同一个班的学生都有谁?
+SELECT name,class_id FROM student
+WHERE class_id=(SELECT class_id FROM student WHERE name='李费水');
+-- 4.查看工资最高的老师的工资和奖金是多少?
+SELECT name,salary,comm
+FROM teacher
+WHERE salary=(SELECT MAX(salary) FROM teacher);
 
 
 
