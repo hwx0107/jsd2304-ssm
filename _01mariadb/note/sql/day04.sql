@@ -117,5 +117,14 @@ SELECT name,salary,comm
 FROM teacher
 WHERE salary=(SELECT MAX(salary) FROM teacher);
 
+-- 查看比教科目2和科目4老师工资都高的老师都有谁? -- 单行单列练习
+SELECT name,salary
+FROM teacher
+WHERE salary>(SELECT MAX(salary) FROM teacher WHERE subject_id IN (2,4));
 
+-- 多行单列子查询
+-- 1.查看与"祝雷"和"李费水"在同一个班的学生都有谁?
+SELECT name,class_id
+FROM student
+WHERE class_id IN (SELECT class_id FROM student WHERE name IN ('祝雷','李费水'));
 
