@@ -138,3 +138,27 @@ GROUP BY subject_id;
 SHOW TABLES;
 SELECT * FROM sal;
 DROP TABLE sal;
+
+-- 关联查询
+CREATE TABLE a(
+                  aid INT,
+                  aname VARCHAR(20)
+);
+INSERT INTO a VALUES (1,'聂风'),(2,'步惊云'),(3,'星矢');
+
+CREATE TABLE b
+(
+    bid   INT,
+    bname VARCHAR(20)
+);
+INSERT INTO b VALUES (1,'雅典娜'),(2,'水冰月');
+
+SELECT * FROM a;
+SELECT * FROM b;
+SELECT * FROM a,b;
+SELECT aa.aid,aa.aname,bb.bid,bb.bname FROM a aa,b bb;
+
+-- 查看每个老师以及其负责课程科目名?
+SELECT t.name,s.name
+FROM teacher t, subject s
+WHERE t.subject_id=s.id;
