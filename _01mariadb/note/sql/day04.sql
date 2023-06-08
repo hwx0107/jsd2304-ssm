@@ -173,7 +173,23 @@ SELECT s.name,s.age,c.name,c.floor
 FROM class c, student s
 WHERE s.class_id=c.id;
 
+-- 王克晶是哪个班的班主任?列出:班级名称，楼层，老师名称，工资
+SELECT c.name,c.floor,t.name,t.salary
+FROM class c, teacher t
+WHERE c.teacher_id=t.id
+  AND t.name='王克晶';
 
+-- 查看三年级的班级班主任都是谁?要列出班级名称，所在楼层，班主任名字和工资
+SELECT c.name,c.floor,t.name,t.salary
+FROM class c, teacher t
+WHERE c.teacher_id=t.id
+  AND c.name LIKE '3年级%';
+
+-- 查看来自南京的学生都有谁?要列出城市名字，学生名字，年龄，性别
+SELECT l.name,s.name,s.age,s.gender
+FROM student s, location l
+WHERE s.location_id=l.id
+  AND l.name='南京';
 
 
 
