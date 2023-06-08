@@ -314,6 +314,22 @@ WHERE c.teacher_id=t.id
   AND t.salary=(SELECT MAX(salary) FROM teacher);
 
 
+-- 多对多关系 -------------------------
+-- 查看学习语文的学生都有谁，列出学生姓名、科目名称、学生成绩?
+SELECT s.name,su.name,tss.score
+FROM subject su, t_stu_subject_score tss, student s
+WHERE tss.subject_id=su.id
+  AND tss.stu_id=s.id
+  AND su.name='语文';
+
+-- 查看'李费水'都学了哪门课程以及成绩，列出学生姓名、科目名称、学生成绩?
+SELECT s.name,su.name,tss.score
+FROM subject su, t_stu_subject_score tss, student s
+WHERE tss.subject_id=su.id
+  AND tss.stu_id=s.id
+  AND s.name='李费水';
+
+
 
 
 
