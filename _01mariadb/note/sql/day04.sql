@@ -295,6 +295,23 @@ WHERE t.subject_id=s.id
   AND s.name='语文';
 
 
+-- 查看教每门课老师的平均工资是多少(GROUP BY)?列出平均工资和科目名称
+SELECT s.name,AVG(t.salary) avg_sal
+FROM teacher t, subject s
+WHERE t.subject_id=s.id
+GROUP BY s.name;
+-- 仅查看平均工资高于6000的那些科目的老师平均工资是多少?列出平均工资和科目名称
+SELECT s.name,AVG(t.salary) avg_sal
+FROM teacher t, subject s
+WHERE t.subject_id=s.id
+GROUP BY s.name
+HAVING avg_sal>6000;
+-- 查看工资最高的老师班里的学生共多少人?
+SELECT COUNT(s.id)
+FROM teacher t, class c, student s
+WHERE c.teacher_id=t.id
+  AND s.class_id=c.id
+  AND t.salary=(SELECT MAX(salary) FROM teacher);
 
 
 
