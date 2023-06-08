@@ -86,6 +86,20 @@ ORDER BY number DESC
     LIMIT 0,2;
 
 
+-- 14.统计表中都有哪些国家
+SELECT DISTINCT country FROM sanguo;
+
+-- 15.统计表中有几个国家
+SELECT COUNT(DISTINCT country) number FROM sanguo;
+
+USE tedu;
+-- DISTINCT 去重 --------------------------------------
+-- 1.查看老师的职称都有哪些?
+SELECT DISTINCT title FROM teacher;
+-- 2.查看学生都有哪些职位?
+SELECT DISTINCT job FROM student;
+-- 3.查看各年龄段的学生都有哪些职位?
+SELECT DISTINCT age,job FROM student;
 
 
 
