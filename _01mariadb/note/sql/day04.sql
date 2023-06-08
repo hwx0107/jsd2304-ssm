@@ -191,5 +191,10 @@ FROM student s, location l
 WHERE s.location_id=l.id
   AND l.name='南京';
 
-
+-- 查看5年级的中队长都有谁?要列出学生名字，年龄，性别，职位和所在班级的名字以及楼层
+SELECT s.name,s.age,s.gender,s.job,c.name,c.floor
+FROM student s, class c
+WHERE s.class_id=c.id
+  AND c.name LIKE '5年级%'
+  AND s.job='中队长';
 
