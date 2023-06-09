@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 /**
  * 执行DML语句: executeUpdate(sql)方法
@@ -20,8 +21,22 @@ public class JDBCDemo2 {
                     "root",
                     "root"
             );
+            // 快捷键: connection.createStatement().var + 回车Enter
             Statement statement = connection.createStatement();
-            String sql = "INSERT INTO userinfo (username,password,nickname,age) VALUES('赵丽颖','871016','花千骨',36)";
+
+            // 接收用户输入
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("欢迎注册");
+            System.out.println("请输入用户名:");
+            String username = scanner.nextLine();
+            System.out.println("请输入密码:");
+            String password = scanner.nextLine();
+            System.out.println("请输入昵称:");
+            String nickname = scanner.nextLine();
+            System.out.println("请输入年龄:");
+            int age = scanner.nextInt();
+
+            String sql = "INSERT INTO userinfo (username,password,nickname,age) VALUES('"+username+"','"+password+"','"+nickname+"',"+age+")";
             // executeUpdate(sql)返回值:受影响的数据条数(整数 0 或 非0)
             int num = statement.executeUpdate(sql);
             if(num>0){
