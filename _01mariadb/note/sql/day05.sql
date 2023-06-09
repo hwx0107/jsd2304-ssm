@@ -124,7 +124,19 @@ GROUP BY s.name,s.job;
 
 -- 作业结束 -----------------------------------------------
 
-
+-- 内连接查询 ------------------
+-- 查看1年级1班的学生信息?列出学生名字,年龄,所在班级
+-- 关联查询写法
+SELECT s.name,s.age,c.name
+FROM class c, student s
+WHERE s.class_id=c.id
+  AND c.name='1年级1班';
+-- 查看1年级1班的学生信息?列出学生名字,年龄,所在班级
+-- 内连接查询写法
+SELECT s.name,s.age,c.name
+FROM class c
+         JOIN student s ON c.id = s.class_id
+WHERE c.name='1年级1班';
 
 
 
