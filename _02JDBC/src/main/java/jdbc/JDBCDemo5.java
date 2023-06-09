@@ -24,6 +24,14 @@ public class JDBCDemo5 {
                 让结果集向下移动一行,返回值为 true | false
              */
             while (rs.next()){
+                // 根据索引值获取数据
+                /**
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                int salary = rs.getInt(3);
+                String title = rs.getString(4);
+                 */
+
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int salary = rs.getInt("salary");
