@@ -17,10 +17,9 @@ public class DBUtil {
             e.printStackTrace();
         }
     }
-
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                // 注意更改库名为:tedu ,此项配置直接到文档服务器中复制
+                // 注意库名:tedu
                 "jdbc:mysql://localhost:3306/tedu?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true",
                 "root",
                 "root"
