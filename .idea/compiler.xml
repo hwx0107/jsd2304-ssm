@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="_01mariadb" />
+        <module name="_02JDBC" />
       </profile>
     </annotationProcessing>
   </component>
