@@ -138,6 +138,26 @@ FROM class c
          JOIN student s ON c.id = s.class_id
 WHERE c.name='1年级1班';
 
+-- Ctrl + Alt + l  格式化SQL语句
+-- 查看教英语的老师都有谁?
+SELECT s.name, t.name
+FROM teacher t
+         JOIN subject s ON t.subject_id = s.id
+WHERE s.name = '英语';
+
+-- 查看每个班级名以及对应的班主任名字?
+SELECT c.name,t.name
+FROM teacher t
+         JOIN class c ON t.id = c.teacher_id;
+
+-- 查看王克晶所带班级的女同学都有谁?(列出:老师名字，班级名字，学生名字，学生性别)
+SELECT t.name,s.name,c.name,s.gender
+FROM student s
+         JOIN class c ON s.class_id = c.id
+         JOIN teacher t ON c.teacher_id = t.id
+WHERE s.gender='女'
+  AND t.name='王克晶';
+
 
 
 
