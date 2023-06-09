@@ -171,6 +171,29 @@ SELECT c.name,t.name
 FROM class c
          RIGHT JOIN teacher t ON c.teacher_id = t.id;
 
+-- 自连接 ----------------------------------
+-- 查看'刘苍松'的下属都有谁?
+-- t: 老师表
+-- m: 领导表
+SELECT t.name,t.manager,m.id,m.name
+FROM teacher t, teacher m
+WHERE t.manager=m.id
+  AND m.name='刘苍松';
+
+SELECT t.name,m.name
+FROM teacher t
+         JOIN teacher m ON t.manager=m.id
+WHERE m.name='刘苍松';
+
+-- 查看3年级2班的班长是谁?(student表中team_leader记录班长的学生id)
+SELECT c.name,s.name
+FROM class c
+         JOIN student s ON c.id = s.class_id
+WHERE c.name='3年级2班'
+  AND s.team_leader=s.id;
+
+-- SELECT * FROM class;
+-- SELECT * FROM student WHERE class_id=8;
 
 
 
