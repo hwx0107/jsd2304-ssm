@@ -158,7 +158,18 @@ FROM student s
 WHERE s.gender='女'
   AND t.name='王克晶';
 
+-- 外连接
+-- 查看所有班级信息和对应的班主任信息,如果该班没有班主任也要将班级信息列出来
+-- 左外连接
+SELECT c.name,t.name
+FROM class c
+         LEFT JOIN teacher t ON c.teacher_id = t.id;
 
+-- 查看所有班级信息和对应的班主任信息，如果该老师不带班,也要将老师信息列出来
+-- 右外连接
+SELECT c.name,t.name
+FROM class c
+         RIGHT JOIN teacher t ON c.teacher_id = t.id;
 
 
 
