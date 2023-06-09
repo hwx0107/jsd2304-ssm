@@ -7,11 +7,11 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 /**
- * 执行DML语句: executeUpdate(sql)方法
- * 注册功能: 在userinfo表中插入一条表记录（INSERT语句）
+ * JDBC执行DML语句
+ * 修改密码功能 UPDATE
  */
 
-public class JDBCDemo2 {
+public class JDBCDemo3 {
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,22 +26,18 @@ public class JDBCDemo2 {
 
             // 接收用户输入
             Scanner scanner = new Scanner(System.in);
-            System.out.println("欢迎注册");
+            System.out.println("修改密码");
             System.out.println("请输入用户名:");
             String username = scanner.nextLine();
-            System.out.println("请输入密码:");
+            System.out.println("请输入新密码:");
             String password = scanner.nextLine();
-            System.out.println("请输入昵称:");
-            String nickname = scanner.nextLine();
-            System.out.println("请输入年龄:");
-            int age = scanner.nextInt();
-            String sql = "INSERT INTO userinfo (username,password,nickname,age) VALUES('"+username+"','"+password+"','"+nickname+"',"+age+")";
-            // executeUpdate(sql)返回值:受影响的数据条数(整数 0 或 非0)
+
+            String sql = "UPDATE userinfo SET password='"+password+"' WHERE username='"+username+"'";
             int num = statement.executeUpdate(sql);
-            if(num>0){
-                System.out.println("注册成功");
+            if(num > 0){
+                System.out.println("密码修改成功");
             }else{
-                System.out.println("注册失败");
+                System.out.println("密码修改失败");
             }
             connection.close();
         } catch (ClassNotFoundException | SQLException e) {
